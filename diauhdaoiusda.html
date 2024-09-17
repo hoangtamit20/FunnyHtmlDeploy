@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc Nghiệm Tình Yêu: Dawson Le và Hannie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            display: none;
+            margin-bottom: 20px;
+        }
+        .question.active {
+            display: block;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options {
+            margin: 10px 0;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Trắc Nghiệm Tình Yêu 💕❤️💕</h1>
+
+        <div id="question1" class="question active">
+            <p>Câu hỏi 1: Hannie và anh Lee gặp nhau lần đầu tiên ở đâu?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> Quán cà phê</label>
+                <label><input type="radio" name="q1" value="B"> Avepoint</label>
+                <label><input type="radio" name="q1" value="C"> Quán nhậu</label>
+                <label><input type="radio" name="q1" value="D"> Buổi hòa nhạc</label>
+            </div>
+            <button onclick="checkAnswer(1, 'B')">Submit</button>
+        </div>
+
+        <div id="question2" class="question">
+            <p>Câu hỏi 2: Nếu có được đối phương trong 1 giờ đồng hồ bạn sẽ làm gì ?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> Ăn luôn chơ làm chi</label>
+                <label><input type="radio" name="q2" value="B"> Nâng niu</label>
+                <label><input type="radio" name="q2" value="C"> Cưng chiều</label>
+            </div>
+            <button onclick="checkAnswer(2, 'A')">Submit</button>
+        </div>
+
+        <div id="question3" class="question">
+            <p>Câu hỏi 3: Bạn có đồng ý nghe tiếp câu chuyện của anh Lee không ?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="C"> Có</label>
+                <label><input type="radio" name="q3" value="C"> Yes</label>
+                <label><input type="radio" name="q3" value="C"> Đồng ý luôn</label>
+                <label><input type="radio" name="q3" value="C"> Ok</label>
+            </div>
+            <button onclick="checkAnswer(3, 'C')">Submit</button>
+        </div>
+
+    </div>
+
+    <!-- Include fireworks-js library -->
+    <script>
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+            if (selectedOption) {
+                if (selectedOption.value === correctAnswer) {
+                    // Hide current question and show next question
+                    document.getElementById(`question${questionNumber}`).classList.remove('active');
+                    const nextQuestion = document.getElementById(`question${questionNumber + 1}`);
+                    if (nextQuestion) {
+                        nextQuestion.classList.add('active');
+                    } else {
+                        // All questions completed
+                        alert('Chúc mừng bạn đã hoàn thành!');
+                        window.location.href = 'message.html'
+                    }
+                } else {
+                    alert('Đáp án sai. Vui lòng thử lại.');
+                }
+            } else {
+                alert('Vui lòng chọn một đáp án.');
+            }
+        }
+    </script>
+
+</body>
+</html>
